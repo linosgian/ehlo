@@ -71,9 +71,9 @@ web. For the purposes of this post, all we care about is that this protocol
 opens up a TCP connection and throws in it everything we provide it with, in
 the form of URL-encoded data in the URI. For instance,
 
-`gopher://koko.org:8080/_insert%20data%20here`
+`gopher://example.org:8080/_insert%20data%20here`
 
-`insert data here` is going to be thrown into a TCP connection to `koko.org` -
+`insert data here` is going to be thrown into a TCP connection to `example.org` -
 port 8080
 
 # Exploiting gophers
