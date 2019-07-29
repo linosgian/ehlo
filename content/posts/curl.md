@@ -100,7 +100,7 @@ and the developers.
 What if a malicious user hosts a website that all it does is redirect to other
 protocols. Oh well, what can one do with this? Could `gopher://` mentioned above
 be used? I would bet it cannot, no way such an obscure and old protocol that
-has not seen the light of day the past decade is allowed.
+has not seen the light of day the past decade (or more) is allowed.
 
 It turns out up until recently that was the case. As seen in [libcurl's source
 code] the default *allowed* protocols are all protocols supported by libcurl except
@@ -137,7 +137,8 @@ The solution to this for our example is to set libcurl's
 `CURLOPT_REDIR_PROTOCOLS` option, and define the allowed redirect protocols
 there.
 
-Questions arise though:
+Although people have been starting to revive this protocol by hosting gopher
+sites lately, questions arise:
 
 - Do we *really* need such protocols in the general case? 
 - How many of us actually use such protocols? 
