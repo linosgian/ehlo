@@ -3,3 +3,8 @@ baseurl = "https://snf-8325.ok-kno.grnetcloud.net"
 languageCode = "en-us"
 theme = "hugo-theme-hello-friend"
 publishDir = "/var/www/html/"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
