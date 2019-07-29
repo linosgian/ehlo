@@ -13,7 +13,7 @@ publishDir = "/var/www/html/"
 
 [languages]
     [languages.en.params.logo]
-        logoText = "ehlo!"
+        logoText = "lgian"
     [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "about"
