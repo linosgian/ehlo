@@ -1,6 +1,7 @@
 ---
 title: "About"
 date: 2019-07-29T00:10:37+03:00
+author: lgian
 draft: false
 ---
 
