@@ -61,7 +61,7 @@ is vast and it affect many different projects based on them.
 
 ## Gopher
 
-Gopher according to wikipedia is:
+Gopher according to [wikipedia] is:
 
 > An TCP/IP application layer protocol designed for distributing, searching, and
 retrieving documents over the internet.
@@ -156,6 +156,7 @@ to solve as seen [here]. This is due to [RFC3986]'s URI definitions being
 really complex and also covering many encodings. For instance:
 `http://2130706433/` is `http://127.0.0.1` in decimal notation.
 
+[wikipedia]: https://en.wikipedia.org/wiki/Gopher_(protocol)
 [libcurl's source code]: https://github.com/curl/curl/blob/7e8f1916d6d90b6b2a68833846a52e1ea9dbb309/lib/url.c#L491
 [this]: https://maxchadwick.xyz/blog/ssrf-exploits-against-redis
 [RFC3986]: https://tools.ietf.org/html/rfc3986#section-3.2.2
