@@ -132,7 +132,7 @@ Another example is deleting elasticsearch indices:
 
 `gopher://elasticsearch.host:9200/_DELETE%20/some_index%20HTTP%2F1.0%0A`
 
-# Patching curl
+# Patching libcurl
 
 The solution to this for our example is to set libcurl's
 `CURLOPT_REDIR_PROTOCOLS` option, and define the allowed redirect protocols
