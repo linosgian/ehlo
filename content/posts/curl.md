@@ -1,7 +1,7 @@
 ---
 title: "Ironing curl"
 date: 2019-07-29T04:42:26+03:00
-description: A wild `gopher://` appeared while I was browsing the web! Explore how exotic protocols from the past can bite modern applications.
+description: A wild `gopher://` appeared! Explore how exotic protocols from the past can bite modern applications.
 slug: ironing-curl
 author: lgian
 tags:
