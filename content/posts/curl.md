@@ -132,7 +132,7 @@ Another example is deleting elasticsearch indices:
 
 `gopher://elasticsearch.host:9200/_DELETE%20/some_index%20HTTP%2F1.0%0A`
 
-# Ironing curl
+# Patching curl
 
 The solution to this for our example is to set libcurl's
 `CURLOPT_REDIR_PROTOCOLS` option, and define the allowed redirect protocols
@@ -147,8 +147,13 @@ sites lately, questions arise:
 
 It turns out that curl developers agreed that this is not sane default
 behaviour, and that exotic protocols such as `Gopher` should be explicitly allowed in
-redirects. In this regard, a [PR was merged](https://github.com/curl/curl/pull/4094) only allowing `HTTP`, `HTTPS`
+redirects. In this regard, after discussing it in the libcurl mailing list, I opened a
+[PR that got merged a while ago](https://github.com/curl/curl/pull/4094) only allowing `HTTP`, `HTTPS`
 and `FTP` for redirects, by default.
+
+---
+Shoutout to [@apoikos](https://twitter.com/apoikos) for helping me throughout
+the process of getting my PR merged and for pushing me to actually open one!
 
 ### Side note
 
