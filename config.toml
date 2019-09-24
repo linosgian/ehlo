@@ -1,5 +1,5 @@
 title = "ehlo!"
-baseurl = "https://snf-8325.ok-kno.grnetcloud.net"
+baseurl = "/"
 languageCode = "en-us"
 theme = "hugo-theme-hello-friend"
 publishDir = "/var/www/html/"
