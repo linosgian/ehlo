@@ -314,8 +314,8 @@ a hostname, e.g. `torrents.lgian.com`.
 
 Traefik has the ability to generate (and auto-renew) Let's Encrypt(LE) certificates,
 through HTTP and DNS challenges. Since I am doing this in my home's NAT'ed
-network, I would have to go through the trouble of setting up a reverse proxy,
-port forward the traffic, and solve LE's HTTP challenge, and I might not be able to
+network, I would have to go through the trouble of
+port forwarding the traffic, and solve LE's HTTP challenge, and I might not be able to
 do all of this, since my ISP's router is already running the management service
 on ports 80 and 443 (on all interfaces), so that they can push updates, restart my router etc...
 
@@ -368,7 +368,6 @@ First, I give access to the Nomad's client on Vault (it basically generates a to
 "traefik" policy on it). Second, when we run the job, the secret is pulled from
 Vault, and the it's injected in the job's environment for Traefik to use.
 
-
 ## Monitoring
 
 Although none of the services I'm running are critical, except for the health of
@@ -402,6 +401,19 @@ For visualization, I used Grafana alongside several standard dashboards:
 - A `cAdvisor` specific for a per-container metrics
 - One for S.M.A.R.T stats, concerning my disks' health
 
+## Backups
+
+As stated above, I use [restic](https://restic.net/) to ensure that no data is
+going to get lost, in case I mess up or lose both my drives during resilvering.
+For the volume of data I have at the moment, [Backblaze](https://www.backblaze.com/)
+seemed like a reasonable choice. All I had to do was setup a [batch](https://nomadproject.io/docs/schedulers/#batch)
+Nomad job. I could just setup a cronjob, but I did it this way for the same reason I ran
+`node_exporter` in a docker container: uniformity. I keep everything running on
+the host (except for Vault and Consul) as Nomad jobs.
+
+I've included the Nomad job and the accompanying bash script in the Appendix
+below
+
 
 # Usecases
 
@@ -422,3 +434,44 @@ location that I want to download and stream videos from, I opted for Plex and so
 far I am quite satisfied. It syncs my progress (so I can switch between devices
 seamlessly), automatically scans for new content, downloads subtitles and most
 importantly, I've had no issues streaming even through WiFi (5Ghz).
+
+-------
+
+# Appendix
+
+## Restic
+
+```
+job "restic" {
+  type = "batch"
+
+  periodic {
+    cron = "0 21 * * *"
+    // Do not allow overlapping runs.
+    prohibit_overlap = true
+  }
+
+  task "backup" {
+    driver = "raw_exec"
+
+    config {
+      command = "/usr/local/bin/restic.sh"
+    }
+    template {
+      {% raw %}
+      data = <<EOF
+B2_ACCOUNT_KEY="{{with secret "kv/data/b2/acc_key"}}{{.Data.data.key}}{{end}}"
+B2_ACCOUNT_ID="{{with secret "kv/data/b2/acc_id"}}{{.Data.data.key}}{{end}}"
+EOF
+      {% endraw %}
+      destination = "secrets/file.env"
+      env = true
+    }
+  }
+}
+```
+
+```
+# lgian → cat restic.sh
+/usr/bin/restic --verbose --password-file /etc/restic/pw-file.txt -o b2.connections=20 backup /zfs/nextcloud/root/data/lgian/files/linos/ /zfs/nextcloud/root/data/koko/files/photos/
+```
