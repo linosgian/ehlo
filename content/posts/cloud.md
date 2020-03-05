@@ -14,7 +14,7 @@ draft: true
 # What?
 
 In an attempt to take (some) of my data back from the "cloud", and learn
-something in the way, I decided to gather all my photos and my family's photos,
+something along the way, I decided to gather all my photos and my family's photos,
 scattered around in old HDDs, flash drives or random "cloud" providers, and host
 them in my own hardware at home.
 
@@ -50,7 +50,7 @@ They have created platforms that exploit humans'
 need for exposure and validation from others. They provide people's daily dose
 of endorphins when others like their post or retweet them.
 
-Sadly, I don't thing that people are not informed enough to care, they simply
+Sadly, I don't think that people are not informed enough to care, they simply
 turn to arguments like:
 
 - I have nothing to hide
@@ -94,7 +94,7 @@ Starting with the hardware I've got for this endeavour:
 - TP-LINK TL-SG1005D v8 - unmanaged gigabit switch
 
 Once I assembled the hardware, I installed Debian Buster on it, copied over my
-SSH key and starting configuring the host. Soon after I was greeted with a weird bug.
+SSH key and started configuring the host. Soon after I was greeted with a weird bug.
 
 ## The occasional random freeze
 
@@ -249,7 +249,7 @@ job "photoprism" {
 
 ```
 
-The most important parameter here is the "driver", it basically defines with
+The most important parameter here is the "driver", it basically defines what
 kind of workload we want to run. Nomad is able to handle VMs, Docker, LXCs, rkt, and so
 on.
 
@@ -303,8 +303,8 @@ job "transmission" {
   }
 ...
 ```
-If the request's `Host` header as follows `Host: torrents.lgian.com`, then it
-will be routed correctly
+If the request's `Host` header is as follows `Host: torrents.lgian.com`, then it
+will be routed correctly.
 
 NOTE: The `Host` header is automatically injected by browsers when we type in
 a hostname, e.g. `torrents.lgian.com`.
@@ -320,8 +320,8 @@ do all of this, since my ISP's router is already running the management service
 on ports 80 and 443 (on all interfaces), so that they can push updates, restart my router etc...
 
 DNS challenges came to the rescue here. In order to prove ownership of the DNS
-domain, one has to push a new `TXT` record containing a random string, sent to
-you by LE. The thing is, your DNS provider has to have an API for me to push
+domain, one has to push a new `TXT` record containing a challenge string, sent to
+you by LE. The thing is, your DNS provider has to have an API for you to push
 such updates. I've bought my domain from [`Papaki`](https://www.papaki.com/en), and they currently don't
 support this. Therefore, I switch to DigitalOcean's DNS servers for my domain.
 
@@ -377,17 +377,17 @@ infrastructure.
 
 ### Metrics
 
-- node-exporter: Basic host metrics (e.g. kernel statistics, network, CPU, RAM,
+- [node-exporter](https://github.com/prometheus/node_exporter): Basic host metrics (e.g. kernel statistics, network, CPU, RAM,
     etc.)
-- smartmon.sh: A script wrapping `smartctl` and exposes [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) statistics for
+- [smartmon.sh](https://github.com/prometheus-community/node-exporter-textfile-collector-scripts/blob/f76c400c5e1036bfb230f4cb4448fcac3701924f/smartmon.sh): A script wrapping `smartctl` and exposes [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) statistics for
     node-exporter.
-- cAdvisor: per-container metrics
+- [cAdvisor](https://github.com/google/cadvisor): per-container metrics
 
 ### Prometheus
 
 Prometheus features a time-series database that consumes all of the
 aforementioned metrics. Prometheus provides a query language called PromQL
-in order to construct complex queries and so setup alerting based on them.
+in order to construct complex queries and setup alerting based on them.
 Although you can setup alerts, Prometheus does not handle aggregation, ignoring
 alerts, sending notifications and so on. For that purpose, `alertmanager` can be
 utilized.
