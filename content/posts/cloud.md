@@ -8,6 +8,7 @@ tags:
 - home_automation
 - self_hosted
 - nomad
+cover: "ccc.jpg"
 draft: true
 ---
 
