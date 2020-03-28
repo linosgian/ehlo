@@ -63,7 +63,7 @@ single vdev in mirror mode, using the 2x4TB WD RED drives.
 This pool is intended for anything important, e.g. photos/videos.
 ```
 
-root@ntoulapa# zpool list -v -P -H
+# lgian → zpool list -v -P -H
 tank    3.62T   111G    3.52T   -       -       0%      2%      1.00x   ONLINE  -
         mirror  3.62T   111G    3.52T   -       -       0%      2.97%   -       ONLINE
         /dev/disk/by-id/ata-WDC_WD40EFRX-68N32N0_WD-WCC7K0LNLCDF-part1  -       -       -       -       -       -       -       -       ONLINE
@@ -203,7 +203,7 @@ Once the job is started, Consul will register the service and let Traefik pick
 it up.
 
 ```
-# lgian@ntoulapa[~] → consul catalog services
+# lgian → consul catalog services
 cadvisor
 dnscrypt-proxy
 exporter
