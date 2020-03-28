@@ -9,7 +9,7 @@ tags:
 - self_hosting
 - nomad
 cover: "ccc2.jpg"
-draft: true
+draft: false
 ---
 
 # Disclaimer #2

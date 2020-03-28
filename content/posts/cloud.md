@@ -7,7 +7,7 @@ tags:
 - self_hosting
 - privacy
 cover: "ccc.jpg"
-draft: true
+draft: false
 ---
 
 # What?
