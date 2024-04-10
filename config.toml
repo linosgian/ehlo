@@ -3,6 +3,7 @@ baseurl = "/"
 languageCode = "en-us"
 theme = "hugo-theme-hello-friend"
 publishDir = "/var/www/html/"
+enableEmoji = true
 
 [permalinks]
     posts = "/:year/:month/:title"
