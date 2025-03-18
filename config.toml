@@ -2,7 +2,7 @@ title = "ehlo!"
 baseurl = "/"
 languageCode = "en-us"
 theme = "hugo-theme-hello-friend"
-publishDir = "/var/www/html/"
+publishDir = "public/"
 enableEmoji = true
 
 [permalinks]
