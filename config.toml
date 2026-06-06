@@ -12,6 +12,10 @@ enableEmoji = true
     showReadingTime = true
     showMenuItems = 2
 
+[params.author]
+    name = "Linos Giannopoulos"
+    email = "linosgian00@gmail.com"
+
 [languages]
     [languages.en.params.logo]
         logoText = "lgian"
